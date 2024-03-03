@@ -26,7 +26,7 @@ def test_ftn(request):
         {"name": "altcoin", "data": altcoin_data},
         {"name": "alt_qty", "data": alt_qty},
         {"name": "fx_data", "data": fx_data},
-        {"name": "interest", "data": round(interest, 4)},
+        {"name": "interest", "data": round(interest * 100, 3)},
     ]
 
     return render(request, "trade/home.html", {"data": data})
@@ -50,6 +50,6 @@ def get_data(request):
         {"name": "altcoin", "data": altcoin_data},
         {"name": "alt_qty", "data": alt_qty},
         {"name": "fx_data", "data": fx_data},
-        {"name": "interest", "data": round(interest, 4)},
+        {"name": "interest", "data": round(interest * 100, 3)},
     ]
     return JsonResponse(data, safe=False)
