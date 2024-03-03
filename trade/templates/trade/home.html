@@ -70,13 +70,17 @@
 
     <script>
       function updateScores() {
-        fetch('trading-django-1.vercel.app/data')
+        fetch('http://127.0.0.1:8000/data')
           .then(response => response.json())
           .then(data => {
             // console.log(data)
             const dynamicData = data
               .map(a => {
-                return `<td>${a.data}</td>`
+                return `<td ${
+                  a.name === 'interest' && a.data >= 5
+                    ? 'style="background-color:green; color:white" '
+                    : ''
+                }>${a.data}</td>`
               })
               .join('\n')
             // console.log(dynamicData)
@@ -91,7 +95,7 @@
           })
       }
 
-      setInterval(updateScores, 4000)
+      setInterval(updateScores, 8000)
     </script>
   </body>
 </html>
