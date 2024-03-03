@@ -20,13 +20,14 @@ def test_ftn(request):
     interest = (
         (altcoin_data / fx_data) - (kraken_price_inc_withdraw)
     ) / kraken_price_inc_withdraw
+    interest *= 100
     data = [
         {"name": "kraken", "data": kraken_price_inc_withdraw},
         {"name": "kraken_qty", "data": kraken_qty},
         {"name": "altcoin", "data": altcoin_data},
         {"name": "alt_qty", "data": alt_qty},
         {"name": "fx_data", "data": fx_data},
-        {"name": "interest", "data": round(interest * 100, 3)},
+        {"name": "interest", "data": round(interest, 2)},
     ]
 
     return render(request, "trade/home.html", {"data": data})
@@ -43,13 +44,13 @@ def get_data(request):
     interest = (
         (altcoin_data / fx_data) - (kraken_price_inc_withdraw)
     ) / kraken_price_inc_withdraw
-
+    interest *= 100
     data = [
         {"name": "kraken", "data": kraken_price_inc_withdraw},
         {"name": "kraken_qty", "data": kraken_qty},
         {"name": "altcoin", "data": altcoin_data},
         {"name": "alt_qty", "data": alt_qty},
         {"name": "fx_data", "data": fx_data},
-        {"name": "interest", "data": round(interest * 100, 3)},
+        {"name": "interest", "data": round(interest, 2)},
     ]
     return JsonResponse(data, safe=False)
