@@ -122,7 +122,7 @@ class AsyncWebScraper:
 
     async def main_kraken(self):
         async with aiohttp.ClientSession() as session:
-            await asyncio.sleep(2)
+            await asyncio.sleep(0.3)
             task_kraken = [self.fetch_kraken(session, url) for url in url_kraken]
             self.kraken_data = await asyncio.gather(*task_kraken)
 
